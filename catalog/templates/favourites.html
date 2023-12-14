@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="album">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3">
+        {% for album in f_albums %}
+        <div class="col">
+          <div class="card shadow-sm">
+            <div class="card h-100 w-100" style="background-color: gray">
+              <div class="embed-responsive embed-responsive-16by9">
+                <img alt="#" class="mx-auto d-block" src="{{ album.cover.url }}" width="100%" height="100%"/>
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{album.title}}</h5>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a href="{% url 'albums_list' album.slug %}" class="btn btn-sm btn-outline-dark">Details</a>
+                  <a href="{% url 'favourite' album.id %}" class="btn btn-sm btn-outline-dark">Delete from favourites</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

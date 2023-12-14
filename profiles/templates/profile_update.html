@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<form class="row g-2" action="{% url 'user_update' %}" method="POST" style="margin-top: 50px; margin-left: 100px">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="row">
+        <div class="col-md-5">
+            <button type="submit" class="btn btn-warning" style="margin-top: 10px;">Submit</button>
+        </div>
+    </div>
+
+</form>
+{% endblock %}

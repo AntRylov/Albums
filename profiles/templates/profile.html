@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3 mt-3">
+            <h3>{{ profile.first_name }} {{ profile.last_name }}</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="text">
+                {% if profile.avatar %}
+                <img src="{{ profile.avatar.url }}" class="avatar img-circle" alt="avatar" style=
+                        "width: 150px;
+                         height: 150px;
+                         border-radius: 50%;
+                         object-fit: cover;
+                         object-position: center right">
+                {% else %}
+                <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle" alt="avatar"
+                     style=
+                         "width: 150px;
+                         height: 150px;
+                         border-radius: 50%;
+                         object-fit: cover;
+                         object-position: center right">
+                {% endif %}
+            </div>
+            <div class="col-mb-9 mt-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>Information</h4>
+                        <i class="fa fa-link fa-1x"></i></div>
+                    <div class="panel-body">
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li><b>Name:</b> {{ profile.first_name }}</li>
+                            <li><b>Surname:</b> {{ profile.last_name }}</li>
+                            <li><b>email:</b> {{ profile.email }}</li>
+                            <li><b>Username:</b> {{ profile.nickname }}</li>
+
+                            <li><b>Registration date:</b> {{ profile.created_at|date:"M d, Y" }}</li>
+                        </ul>
+                        <a href="{% url 'user_update' %}" class="nav-link px-2 text-dark">Update profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
