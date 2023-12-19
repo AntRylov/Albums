@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  <div class="container">
+    <form class="" action="{% url 'add_album' %}" method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="class=btn btn-outline-light me-2">Select</button>
+      <button type="button" onclick="window.location.href={% url 'albums_list' %}" class="class=btn btn-outline-light me-2">Albums</button>
+    </form>
+  </div>
+{% else %}
+  {% url 'home' %}
+{% endif %}
+{% endblock %}

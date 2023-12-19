@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="album py-5">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {% for album in albums %}
+        <div class="col">
+          <div class="card shadow-sm">
+            <div class="card h-100 w-100" style="background-color: gray">
+              <div class="embed-responsive embed-responsive-16by9">
+                <img alt="#" class="mx-auto d-block" src="{{ album.cover.url }}"/>
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{album.title}} ({{movie.year}})</h5>
+              <a href="{% url 'album_details' album.slug %}" class="btn btn-warning">Details</a>
+              <a href="{% url 'favourite' album.id %}" class="btn btn-light">Add to favourites</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+</div>
+{% endblock %}
